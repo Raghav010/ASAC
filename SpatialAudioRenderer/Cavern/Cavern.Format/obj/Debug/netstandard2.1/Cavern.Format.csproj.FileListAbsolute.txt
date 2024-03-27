@@ -1,0 +1,12 @@
+/home/raghav/Documents/spatialization/Cavern/Cavern.Format/bin/Debug/netstandard2.1/Cavern.Format.deps.json
+/home/raghav/Documents/spatialization/Cavern/Cavern.Format/bin/Debug/netstandard2.1/Cavern.Format.dll
+/home/raghav/Documents/spatialization/Cavern/Cavern.Format/bin/Debug/netstandard2.1/Cavern.Format.pdb
+/home/raghav/Documents/spatialization/Cavern/Cavern.Format/bin/Debug/netstandard2.1/Cavern.dll
+/home/raghav/Documents/spatialization/Cavern/Cavern.Format/bin/Debug/netstandard2.1/Cavern.pdb
+/home/raghav/Documents/spatialization/Cavern/Cavern.Format/obj/Debug/netstandard2.1/Cavern.Format.csproj.AssemblyReference.cache
+/home/raghav/Documents/spatialization/Cavern/Cavern.Format/obj/Debug/netstandard2.1/Cavern.Format.GeneratedMSBuildEditorConfig.editorconfig
+/home/raghav/Documents/spatialization/Cavern/Cavern.Format/obj/Debug/netstandard2.1/Cavern.Format.csproj.CoreCompileInputs.cache
+/home/raghav/Documents/spatialization/Cavern/Cavern.Format/obj/Debug/netstandard2.1/Cavern.Format.sourcelink.json
+/home/raghav/Documents/spatialization/Cavern/Cavern.Format/obj/Debug/netstandard2.1/Cavern.Format.csproj.CopyComplete
+/home/raghav/Documents/spatialization/Cavern/Cavern.Format/obj/Debug/netstandard2.1/Cavern.Format.dll
+/home/raghav/Documents/spatialization/Cavern/Cavern.Format/obj/Debug/netstandard2.1/Cavern.Format.pdb

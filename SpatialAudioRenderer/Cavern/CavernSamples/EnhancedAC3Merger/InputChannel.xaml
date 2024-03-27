@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="EnhancedAC3Merger.InputChannel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="20" d:DesignWidth="400"
+             d:Background="White">
+    <Grid>
+        <TextBlock x:Name="channelName" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100"
+                   Text="Target channel" TextWrapping="Wrap"/>
+        <Button Margin="100,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="65"
+                Content="Open file" Click="OpenFile"/>
+        <Button Margin="170,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="65"
+                Content="Last file" Click="LastFile"
+                ToolTip="Uses the file opened the last time clicking another channel's &quot;Open file&quot; button."/>
+        <TextBlock Margin="240,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="55"
+                   TextAlignment="Right" Text="Channel:" TextWrapping="Wrap"/>
+        <ComboBox x:Name="channelIndex" Margin="300,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100"/>
+    </Grid>
+</UserControl>

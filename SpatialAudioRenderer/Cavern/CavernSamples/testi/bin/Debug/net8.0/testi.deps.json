@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "testi/1.0.0": {
+        "dependencies": {
+          "Cavern": "2.0.2",
+          "Cavern.Format": "2.0.2"
+        },
+        "runtime": {
+          "testi.dll": {}
+        }
+      },
+      "Cavern/2.0.2": {
+        "runtime": {
+          "Cavern.dll": {}
+        }
+      },
+      "Cavern.Format/2.0.2": {
+        "dependencies": {
+          "Cavern": "2.0.2"
+        },
+        "runtime": {
+          "Cavern.Format.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "testi/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Cavern/2.0.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Cavern.Format/2.0.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

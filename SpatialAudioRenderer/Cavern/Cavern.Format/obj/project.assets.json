@@ -1,0 +1,89 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETStandard,Version=v2.1": {
+      "Cavern/2.0.2": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/Cavern.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Cavern.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Cavern/2.0.2": {
+      "type": "project",
+      "path": "../Cavern/Cavern.csproj",
+      "msbuildProject": "../Cavern/Cavern.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETStandard,Version=v2.1": [
+      "Cavern >= 2.0.2"
+    ]
+  },
+  "packageFolders": {
+    "/home/raghav/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "2.0.2",
+    "restore": {
+      "projectUniqueName": "/home/raghav/Documents/spatialization/Cavern/Cavern.Format/Cavern.Format.csproj",
+      "projectName": "Cavern.Format",
+      "projectPath": "/home/raghav/Documents/spatialization/Cavern/Cavern.Format/Cavern.Format.csproj",
+      "packagesPath": "/home/raghav/.nuget/packages/",
+      "outputPath": "/home/raghav/Documents/spatialization/Cavern/Cavern.Format/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/raghav/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "netstandard2.1"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "projectReferences": {
+            "/home/raghav/Documents/spatialization/Cavern/Cavern/Cavern.csproj": {
+              "projectPath": "/home/raghav/Documents/spatialization/Cavern/Cavern/Cavern.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netstandard2.1": {
+        "targetAlias": "netstandard2.1",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "NETStandard.Library": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.103/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

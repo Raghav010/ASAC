@@ -1,0 +1,37 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.1/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.1": {},
+    ".NETStandard,Version=v2.1/": {
+      "Cavern.Format/2.0.2": {
+        "dependencies": {
+          "Cavern": "2.0.2"
+        },
+        "runtime": {
+          "Cavern.Format.dll": {}
+        }
+      },
+      "Cavern/2.0.2": {
+        "runtime": {
+          "Cavern.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Cavern.Format/2.0.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Cavern/2.0.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
