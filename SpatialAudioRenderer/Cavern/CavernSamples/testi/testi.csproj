@@ -9,6 +9,9 @@
 		
 		<Compile Include="..\..\Cavern.Format\Utilities\StreamExtensions.cs" Link="StreamExtensions.cs" />
 	</ItemGroup>
+	<ItemGroup>
+  		<Reference Include="Microsoft.VisualBasic" />
+	</ItemGroup>
     <ItemGroup>
 		<ProjectReference Include="..\..\Cavern/Cavern.csproj" />
         <ProjectReference Include="..\..\Cavern.Format/Cavern.Format.csproj" />
