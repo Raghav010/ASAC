@@ -17,6 +17,7 @@ namespace testi{
 
 
             // all audio clips need to have the same sample rate
+            // all audio clips should be same length, non speaker part needs to be silent
             // all co-ordinates need to be scaled between -1 and 1
             // make sure the co-ordinates are samples at a high rate (min 1FPS)
             // read the config file, get path to audio file and co-ordinates of the source
@@ -165,11 +166,11 @@ namespace testi{
                 for (int i = 0; i < sources.Count; i++)
                 {
                     Source source = sources[i];
-                    if (!source.IsPlaying)
-                    {
-                        source.listener.DetachSource(source); // may or may not work
-                        continue;
-                    }
+                    // if (!source.IsPlaying)
+                    // {
+                    //     source.listener.DetachSource(source); // may or may not work
+                    //     continue;
+                    // }
                     
                     // get the coord values for this frame
                     List<float[]> cRow = cValues[i];
