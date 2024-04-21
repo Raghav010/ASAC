@@ -13,7 +13,7 @@ namespace testi{
 
     static class Program{
 
-        static void Main(){
+        static void MainL(){
 
 
             // all audio clips need to have the same sample rate
@@ -21,7 +21,7 @@ namespace testi{
             // all co-ordinates need to be scaled between -1 and 1
             // make sure the co-ordinates are samples at a high rate (min 1FPS)
             // read the config file, get path to audio file and co-ordinates of the source
-            string filePath = "data.csv";
+            string filePath = "send_raghav.csv";
             int coordSampleRate = 24;
 
             List<string> audioPaths = new List<string>();
@@ -119,7 +119,7 @@ namespace testi{
 
             // setting updateRate
             float updateTime = 1f / coordSampleRate;    
-            updateRate = (int) updateTime * sprate;
+            int updateRate = (int) (updateTime * sprate);
 
             // Create a rendering environment/Listener
             Listener listener = new Listener(){
@@ -147,16 +147,16 @@ namespace testi{
             {
                 if (clip.Length > maxLength)
                 {
-                    maxLength = clip.Length;
+                    maxLength = (long) clip.Length;
                 }
             }
-            long length = (long) maxLength * clip.SampleRate;
+            long length = (long) maxLength * sprate;
 
 
 
             // BroadcastWaveFormatWriter writer = new BroadcastWaveFormatWriter("test_fixed.wav", listener, length, BitDepth.Int16);
             (ReferenceChannel, Source)[] staticObjects = new (ReferenceChannel, Source)[0];
-            DolbyAtmosBWFWriter writer = new DolbyAtmosBWFWriter("test.wav", listener, length, BitDepth.Int16, staticObjects);
+            DolbyAtmosBWFWriter writer = new DolbyAtmosBWFWriter("testRaghav.wav", listener, length, BitDepth.Int16, staticObjects);
 
             // To contain object movement in the file, it has to be written frame-by-frame
             long progress = 0;
@@ -174,12 +174,12 @@ namespace testi{
                     
                     // get the coord values for this frame
                     List<float[]> cRow = cValues[i];
-                    if ((cRow.Count-1) <= ((int) (progress / updateRate)))
+                    if ((cRow.Count-1) >= ((int) (progress / updateRate)))
                     {
-                        float[] cValues = cRow[(int) (progress / updateRate)]; // may or may not work
+                        float[] cVals = cRow[(int) (progress / updateRate)]; // may or may not work
 
                         // All positions will be written relative to the environment size
-                        source.Position = new Vector3(cValues[0], cValues[1], cValues[2]) * Listener.EnvironmentSize;
+                        source.Position = new Vector3(cVals[0], cVals[1], cVals[2]) * Listener.EnvironmentSize;
                     }
                     
                 }

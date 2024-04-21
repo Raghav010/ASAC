@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Bence Sgánetz 2016-2024")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Checks if ADM BWF files match the standard, and logs all compliance failures.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d1216b76f2ac06b35a48ed7dcaa083263eca05f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+17177dbc55ac870ab5013e2955bd2ab00cfab89e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ADM Validator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ADMValidator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
