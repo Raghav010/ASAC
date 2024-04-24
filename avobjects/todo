@@ -1,0 +1,2 @@
+fix hardcoded fps and sample rate of video (fps is hardcoded to 25 and sample rate to 16000)
+remove audio diarization from code, since not needed
