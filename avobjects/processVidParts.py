@@ -10,6 +10,22 @@ coords_csv = 'coords.csv'
 speaker_audio_path = 'speaker_audio.wav'
 
 
+
+def combine(output_dir, partNames, partSuffix, combinedSuffix):
+    video_files = [output_dir + f"{i}{partSuffix}.mp4" for i in range(len(partNames))]
+    video_clips = [VideoFileClip(file) for file in video_files]
+    final_clip = concatenate_videoclips(video_clips)
+    combined_video_path = f"{full_video.split('.')[0]}_combined{combinedSuffix}.mp4"
+    final_clip.to_videofile(combined_video_path, codec="libx264", temp_audiofile='temp-audio.m4a', remove_temp=True, audio_codec='aac')
+
+    print("Combined video created successfully at:", combined_video_path)
+
+
+    # Close all video clips to release resources
+    final_clip.close()
+    for clip in video_clips:
+        clip.close()
+
 clip = VideoFileClip(mediaDir+'/'+full_video)
 fullDura = clip.duration
 fps = int(clip.fps)
@@ -54,18 +70,13 @@ subprocess.run(command, shell=True)
 print('Combining...')
 output_dir = f"{full_video.split('.')[0]}/avobject_viz/"
 
+# for box vids
+combine(output_dir, partNames, '', '')
+combine(output_dir, partNames, 'NOBOX', 'NOBOX')
 
-video_files = [output_dir + f"{i}.mp4" for i in range(len(partNames))]
-video_clips = [VideoFileClip(file) for file in video_files]
-final_clip = concatenate_videoclips(video_clips)
-combined_video_path = f"{full_video.split('.')[0]}_combined.mp4"
-final_clip.to_videofile(combined_video_path, codec="libx264", temp_audiofile='temp-audio.m4a', remove_temp=True, audio_codec='aac')
 
-# Close all video clips to release resources
-final_clip.close()
-for clip in video_clips:
-    clip.close()
 
-print("Combined video created successfully at:", combined_video_path)
+
+
 
 

@@ -120,6 +120,7 @@ def show_cam_on_vid(vid, cam, offset=0):
 
 def viz_boxes_with_scores(video,
                           box_centers,
+                          pad,
                           scores=None,
                           const_box_size=None,
                           colors = None,
@@ -132,6 +133,7 @@ def viz_boxes_with_scores(video,
     if colors is None:
         colors = ut.distinct_colors(len(box_centers))
     peaks_on_vid_viz = []
+    vid_viz = []
 
     def add_cont_bb_size_to_traj(box_centers, const_box_size):
         const_box_size = np.array([const_box_size, const_box_size])
@@ -157,6 +159,9 @@ def viz_boxes_with_scores(video,
 
         border_width = 3
         track_vis = video[tt]
+        vis = video[tt]
+        frame_width = vis.shape[1] - 2*pad
+        frame_height = vis.shape[0] - 2*pad
 
         def make_text(track_vis,
                       scores,
@@ -184,15 +189,17 @@ def viz_boxes_with_scores(video,
             track_vis = make_text(track_vis, asd_scores)
 
             pnt_locs = []
+            pnt_locs_coords = []
             cols = []
             wds = int(bb_sizes.mean())
 
             for ii, asd_sc in enumerate(asd_scores):
                 if asd_sc > asd_thresh:
                     pnt_locs.append(box_centers[ii, tt])
+                    pnt_locs_coords.append([(box_centers[ii, tt][0]-pad)/frame_width,(box_centers[ii, tt][1]-pad)/frame_height])
                     cols.append(colors[ii])
 
-            coords.extend(pnt_locs)
+            coords.extend(pnt_locs_coords)
 
             track_vis = draw_hollow_rects(track_vis,
                                           np.array(pnt_locs),
@@ -201,7 +208,8 @@ def viz_boxes_with_scores(video,
                                           border_width=border_width)
 
         else:
-            coords.extend(box_centers[:, tt])
+            # coords.extend(box_centers[:, tt])
+            coords.extend([[(p[0]-pad)/frame_width,(p[1]-pad)/frame_height] for p in box_centers[:, tt]])
             track_vis = draw_hollow_rects(track_vis,
                                           box_centers[:, tt],
                                           colors,
@@ -209,13 +217,18 @@ def viz_boxes_with_scores(video,
                                           border_width=border_width)
 
         peaks_on_vid_viz.append(track_vis)
+        vid_viz.append(vis)
 
     peaks_on_vid_viz = np.array(peaks_on_vid_viz)
     vid_top_trajectories_viz = peaks_on_vid_viz.transpose([0, 3, 1, 2])
+
+    vid_viz = np.array(vid_viz)
+    vid_top_viz = vid_viz.transpose([0, 3, 1, 2])
+
     coords=np.array(coords)
     coords = coords.flatten()
 
-    return vid_top_trajectories_viz, coords
+    return vid_top_trajectories_viz, vid_top_viz, coords
 
 
 def draw_hollow_rects(im,
@@ -310,9 +323,10 @@ def viz_avobjects(
                                     att_map.detach().cpu(),
                                     offset=model_start_offset)
 
-    vid_avobject, coords = viz_boxes_with_scores(
+    vid_avobject, vid_viz, coords = viz_boxes_with_scores(
         video,
         avobject_traj[..., [1, 0]], # switch x and y coords
+        pad = model_start_offset,
         const_box_size=const_box_size
     )
 
@@ -320,11 +334,18 @@ def viz_avobjects(
     pad_len = model_start_offset
     vid_with_cam = vid_with_cam[..., pad_len:-pad_len, pad_len:-pad_len]
     vid_avobject = vid_avobject[..., pad_len:-pad_len, pad_len:-pad_len]
+    vid_viz = vid_viz[..., pad_len:-pad_len, pad_len:-pad_len]
 
     video_saver.save_mp4_from_vid_and_audio(
         np.concatenate([vid_with_cam, vid_avobject], axis=3),
         audio / 32768,
         outname='{}/{}'.format(vids_name, step),
+    )
+
+    video_saver.save_mp4_from_vid_and_audio(
+        vid_viz,
+        audio / 32768,
+        outname='{}/{}NOBOX'.format(vids_name, step),
     )
     return coords
 
@@ -346,9 +367,10 @@ def viz_source_separation(video,
 
     for ii in range(n_objects):
 
-        vid_avobject, coords = viz_boxes_with_scores(
+        vid_avobject, vid_viz, coords = viz_boxes_with_scores(
             video,
             avobject_traj[ ii:ii+1, :, [1, 0]], # switch x and y coords
+            pad = model_start_offset,
             const_box_size=const_box_size,
             colors = [colors[ii]]
         )
