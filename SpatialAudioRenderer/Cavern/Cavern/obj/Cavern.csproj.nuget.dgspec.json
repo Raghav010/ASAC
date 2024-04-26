@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj": {}
+    "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj": {}
   },
   "projects": {
-    "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj": {
+    "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj": {
       "version": "2.0.2",
       "restore": {
-        "projectUniqueName": "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj",
+        "projectUniqueName": "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj",
         "projectName": "Cavern",
-        "projectPath": "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj",
+        "projectPath": "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj",
         "packagesPath": "/home/raghav/.nuget/packages/",
-        "outputPath": "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern/obj/",
+        "outputPath": "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/raghav/.nuget/NuGet/NuGet.Config"

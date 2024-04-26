@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern.Format/Cavern.Format.csproj": {}
+    "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern.Format/Cavern.Format.csproj": {}
   },
   "projects": {
-    "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern.Format/Cavern.Format.csproj": {
+    "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern.Format/Cavern.Format.csproj": {
       "version": "2.0.2",
       "restore": {
-        "projectUniqueName": "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern.Format/Cavern.Format.csproj",
+        "projectUniqueName": "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern.Format/Cavern.Format.csproj",
         "projectName": "Cavern.Format",
-        "projectPath": "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern.Format/Cavern.Format.csproj",
+        "projectPath": "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern.Format/Cavern.Format.csproj",
         "packagesPath": "/home/raghav/.nuget/packages/",
-        "outputPath": "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern.Format/obj/",
+        "outputPath": "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern.Format/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/raghav/.nuget/NuGet/NuGet.Config"
@@ -26,8 +26,8 @@
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
             "projectReferences": {
-              "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj": {
-                "projectPath": "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj"
+              "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj": {
+                "projectPath": "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj"
               }
             }
           }
@@ -61,14 +61,14 @@
         }
       }
     },
-    "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj": {
+    "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj": {
       "version": "2.0.2",
       "restore": {
-        "projectUniqueName": "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj",
+        "projectUniqueName": "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj",
         "projectName": "Cavern",
-        "projectPath": "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj",
+        "projectPath": "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern/Cavern.csproj",
         "packagesPath": "/home/raghav/.nuget/packages/",
-        "outputPath": "/home/raghav/Documents/ASAC/SpatialAudioRenderer/Cavern/Cavern/obj/",
+        "outputPath": "/home/raghav/Documents/ASAC/ASAC/SpatialAudioRenderer/Cavern/Cavern/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/raghav/.nuget/NuGet/NuGet.Config"

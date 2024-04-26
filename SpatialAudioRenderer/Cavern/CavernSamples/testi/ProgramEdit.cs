@@ -21,7 +21,7 @@ namespace testi{
             // all co-ordinates need to be scaled between -1 and 1
             // make sure the co-ordinates are samples at a high rate (min 1FPS)
             // read the config file, get path to audio file and co-ordinates of the source
-            string filePath = "send_raghav.csv";
+            string filePath = "new_out.csv";
             int coordSampleRate = 24;
 
             List<string> audioPaths = new List<string>();
@@ -63,11 +63,8 @@ namespace testi{
                                 float.TryParse(fields[i + 1], out cValuesTuple[1]);
                                 float.TryParse(fields[i + 2], out cValuesTuple[2]);
                                 cValuesTuple[0] = (float) ((((cValuesTuple[0]) * 2)) - 1);
-                                cValuesTuple[1] = (float) ((((cValuesTuple[1]) * 2)) - 1);
-                                if (cValuesTuple[2] == 0)
-                                {
-                                    cValuesTuple[2] = 1f;
-                                }
+                                cValuesTuple[1] = (float) ((((1-cValuesTuple[1]) * 2)) - 1);
+                                cValuesTuple[2] = (float) (1-cValuesTuple[2]);
                                 cRowValues.Add(cValuesTuple);
                             }
 
@@ -163,7 +160,7 @@ namespace testi{
 
             // BroadcastWaveFormatWriter writer = new BroadcastWaveFormatWriter("test_fixed.wav", listener, length, BitDepth.Int16);
             (ReferenceChannel, Source)[] staticObjects = new (ReferenceChannel, Source)[0];
-            DolbyAtmosBWFWriter writer = new DolbyAtmosBWFWriter("testRaghav.wav", listener, length, BitDepth.Int16, staticObjects);
+            DolbyAtmosBWFWriter writer = new DolbyAtmosBWFWriter("audio_spatial.wav", listener, length, BitDepth.Int16, staticObjects);
 
             // To contain object movement in the file, it has to be written frame-by-frame
             long progress = 0;
