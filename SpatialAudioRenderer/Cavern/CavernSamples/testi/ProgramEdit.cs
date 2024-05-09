@@ -23,6 +23,7 @@ namespace testi{
             // read the config file, get path to audio file and co-ordinates of the source
             string filePath = "new_out.csv";
             int coordSampleRate = 24;
+            float scalingFactor = 1.7f;
 
             List<string> audioPaths = new List<string>();
             List<List<float[]>> cValues = new List<List<float[]>>();
@@ -65,6 +66,14 @@ namespace testi{
                                 cValuesTuple[0] = (float) ((((cValuesTuple[0]) * 2)) - 1);
                                 cValuesTuple[1] = (float) ((((1-cValuesTuple[1]) * 2)) - 1);
                                 cValuesTuple[2] = (float) (1-cValuesTuple[2]);
+
+                                // divide all values by a scaling factor
+                                cValuesTuple[0] = cValuesTuple[0] / scalingFactor;
+                                cValuesTuple[1] = cValuesTuple[1] / scalingFactor;
+                                cValuesTuple[2] = cValuesTuple[2] / scalingFactor;
+
+
+                                
                                 cRowValues.Add(cValuesTuple);
                             }
 
@@ -116,7 +125,7 @@ namespace testi{
 
 
             // headphone virtualizer
-            Listener.HeadphoneVirtualizer = true;
+            // Listener.HeadphoneVirtualizer = true;
             
             Console.WriteLine(clips[0].SampleRate);
 
@@ -137,7 +146,7 @@ namespace testi{
             {
                 Source source = new() {
                     Clip = clip,
-                    DistanceSimulation = true,
+                    // DistanceSimulation = true,
                 };
                 listener.AttachSource(source);
                 sources.Add(source);
@@ -158,9 +167,9 @@ namespace testi{
 
 
 
-            // BroadcastWaveFormatWriter writer = new BroadcastWaveFormatWriter("test_fixed.wav", listener, length, BitDepth.Int16);
+            // BroadcastWaveFormatWriter writer = new BroadcastWaveFormatWriter("audio_spatial.wav", listener, length, BitDepth.Int16);
             (ReferenceChannel, Source)[] staticObjects = new (ReferenceChannel, Source)[0];
-            DolbyAtmosBWFWriter writer = new DolbyAtmosBWFWriter("audio_spatial.wav", listener, length, BitDepth.Int16, staticObjects);
+            DolbyAtmosBWFWriter writer = new DolbyAtmosBWFWriter("audio_spatial_scaled1_7.wav", listener, length, BitDepth.Int16, staticObjects);
 
             // To contain object movement in the file, it has to be written frame-by-frame
             long progress = 0;
@@ -184,9 +193,10 @@ namespace testi{
 
                         // All positions will be written relative to the environment size
                         source.Position = new Vector3(cVals[0], cVals[1], cVals[2]) * Listener.EnvironmentSize;
-                        source.Volume = cVals[2];
+                        // source.Volume = cVals[2];
+                        // Console.WriteLine(source.distance);
+                        // source.Volume = 0;
                     }
-                    
                 }
 
 

@@ -222,6 +222,7 @@ namespace Cavern {
                 // 1D renderer
                 if (SpatialBlend != 1) {
                     float volume1D = Volume * (1f - SpatialBlend);
+                    // Console.WriteLine(volume1D);
                     // 1:1 mix for non-stereo sources
                     if (clipChannels != 2) {
                         samples = Resample.Adaptive(samples, updateRate, listener.AudioQuality);
@@ -260,6 +261,7 @@ namespace Cavern {
                     // ------------------------------------------------------------------
                     if (Listener.IsSymmetric) {
                         float volume3D = Volume * rolloffDistance * SpatialBlend;
+                        // Console.WriteLine(volume3D);
                         if (!LFE) {
                             // Find a bounding box
                             int bottomFrontLeft = -1,
