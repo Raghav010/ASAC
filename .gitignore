@@ -1,9 +1,5 @@
-SpatialAudioRenderer/Cavern/CavernSamples/testi/confcall/only_AjConfcall_spatial_depth.wav
-SpatialAudioRenderer/Cavern/CavernSamples/testi/confcall/only_RagConfcall_spatial_depth.wav
-SpatialAudioRenderer/Cavern/CavernSamples/testi/confcall/only_AaConfcall_spatial_depth.wav
-SpatialAudioRenderer/Cavern/CavernSamples/testi/confcall/only_RgConfcall_spatial_depth.wav
-SpatialAudioRenderer/Cavern/CavernSamples/testi/confcall/only_RgConfcall_spatial.wav
-SpatialAudioRenderer/Cavern/CavernSamples/testi/confcall/only_AjConfcall_spatial.wav
-SpatialAudioRenderer/Cavern/CavernSamples/testi/confcall/only_AaConfcall_spatial.wav
-SpatialAudioRenderer/Cavern/CavernSamples/testi/confcall/only_RagConfcall_spatial.wav
-SpatialAudioRenderer/Cavern/CavernSamples/testi/confcall.zip
+headtracking/yolo_detect_test.mp4
+headtracking/2stagefacerecog_facerecognition_yolo.mp4
+headtracking/2stage_yolo_yunet_detect_test.mp4
+headtracking/output_face_detect_test.mp4
+headtracking/yunet_detect_test.mp4
