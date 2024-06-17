@@ -83,8 +83,9 @@ def detect_faces_in_frame(frame, yunetmodel, detection_threshold, bbox, draw=Tru
             fb = face_boxes[np.array(confs).argmax()]
             face_det.clear()
             face_det.extend([fb['x1'] + x1, fb['y1'] + y1, fb['x2'] +x1, fb['y2']+ y1])
-            if draw:
-                cv2.rectangle(frame, (face_det[0], face_det[1]), (face_det[2], face_det[3]), face_color, 2)  # Green box for face
+        
+        if draw:
+            cv2.rectangle(frame, (face_det[0], face_det[1]), (face_det[2], face_det[3]), face_color, 2)  # Green box for face
         
     return frame, face_dets
 
@@ -353,8 +354,8 @@ while video_capture.isOpened():
 
     frame, pboxs = detect_people_in_frame(frame, model, detection_threshold, False)
 
-    for pbox in pboxs:
-        cv2.rectangle(frame, (int(pbox[0]), int(pbox[1]), int(pbox[2]), int(pbox[3])), (255, 0, 0), 2)
+    # for pbox in pboxs:
+    #     cv2.rectangle(frame, (int(pbox[0]), int(pbox[1]), int(pbox[2]), int(pbox[3])), (255, 0, 0), 2)
 
     # frame, face_info = recognize_faces_in_frame(frame, model, fd, detection_threshold, known_face_encodings, known_face_names)
 
@@ -380,7 +381,7 @@ while video_capture.isOpened():
             # check if indexes are negative or if x1 and x2 are same or y1 and y2 are same
             if track.bbox[0] < 0 or track.bbox[1] < 0 or track.bbox[2] < 0 or track.bbox[3] < 0 or track.bbox[0] == track.bbox[2] or track.bbox[1] == track.bbox[3]:
                 continue
-            cv2.rectangle(frame, (int(track.bbox[0]), int(track.bbox[1]), int(track.bbox[2]), int(track.bbox[3])), (0, 0, 255), 2)
+            # cv2.rectangle(frame, (int(track.bbox[0]), int(track.bbox[1]), int(track.bbox[2]), int(track.bbox[3])), (0, 0, 255), 2)
             faces.append([tuple(track.bbox), track.track_id])
         
         # try:
@@ -390,7 +391,8 @@ while video_capture.isOpened():
         #     print([tuple(track.bbox) for track in tracker.tracks])
         #     exit(0)
         for i in range(len(fboxs)):
-            faces[i].append(((fboxs[i][0]+fboxs[i][2])/2, (fboxs[i][1]+fboxs[i][3])/2))
+            # faces[i].append(((fboxs[i][0]+fboxs[i][2])/2, (fboxs[i][1]+fboxs[i][3])/2))
+            faces[i].append((fboxs[i][0], fboxs[i][1], fboxs[i][2], fboxs[i][3]))
         
         frame, names = recognize_faces_in_frame(frame, detection_threshold, fboxs, known_face_encodings, known_face_names)
         for i in range(len(faces)):
@@ -400,8 +402,11 @@ while video_capture.isOpened():
     output_video.write(frame)
     pbar.update(1)
 
+video_capture.release()
+output_video.release()
+pbar.close()
 
-print(frames2faces[:10])
+# print(frames2faces[:10])
 
 
 trackIds2frames = {}
@@ -418,7 +423,7 @@ for f2fidx in range(len(frames2faces)):
 for trackid in trackIds2frames:
     trackIds2frames[trackid].sort(key=lambda x: x[0])
 
-print(trackIds2frames)
+# print(trackIds2frames)
 
 # try to identify all the unrecognized faces
 for f2fidx in range(len(frames2faces)):
@@ -447,16 +452,45 @@ for f2fidx in range(len(frames2faces)):
                 # get the name of the face in the closest frame
                 face[-1] = frames2faces[closest_frame[0]][closest_frame[1]][-1]
                 print("Identified face in frame", f2fidx, "as", face[-1])
-                
-# write another video using the information in frames2faces, the 2nd element which denotes face point, draw a 50 by 50 box arounf that point and label it with the name
 
 
+# write another video using the information in frames2faces, the 2nd element which denotes the face, draw a rectange there and label it with the name
+
+
+# Open the input video again
+video_capture = cv2.VideoCapture(input_video_path)
+output_video_path_labeled = '3stack_yolo_yunet_facerecognition_enhanced.mp4'
+
+# Video writer
+output_video_labeled = cv2.VideoWriter(output_video_path_labeled, fourcc, fps, (frame_width, frame_height))
+
+# Process the frames and add labels
+pbar = tqdm(total=total_frames, desc="Rendering enhanced version")
+frame_index = 0
+
+while video_capture.isOpened():
+    ret, frame = video_capture.read()
+    if not ret:
+        break
+
+    if frame_index < len(frames2faces):
+        faces = frames2faces[frame_index]
+        for face in faces:
+            face_point = face[2]
+            name = face[3]
+            if len(face_point) == 0 or name == "Unknown":
+                continue
+
+            cv2.rectangle(frame, (int(face_point[0]), int(face_point[1]), int(face_point[2]), int(face_point[3])), (0, 255, 0), 2)
+            cv2.putText(frame, name, (int(face_point[0]) + 6, int(face_point[3]) - 6), cv2.FONT_HERSHEY_DUPLEX, 1.0, (255, 255, 255), 1)
+
+    output_video_labeled.write(frame)
+    pbar.update(1)
+    frame_index += 1
 
 video_capture.release()
-output_video.release()
+output_video_labeled.release()
 pbar.close()
-
-
 
 
 
