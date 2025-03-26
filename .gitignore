@@ -1,7 +1,2 @@
-headtracking/3stack_yolo_yunet_facerecognition_enhanced.mp4
-headtracking/yolo_detect_test.mp4
-headtracking/2stagefacerecog_facerecognition_yolo.mp4
-headtracking/2stage_yolo_yunet_detect_test.mp4
-headtracking/output_face_detect_test.mp4
-headtracking/3stack_yolo_yunet_facerecognition.mp4
-headtracking/yunet_detect_test.mp4
+SSL/SSLalignment/checkpoints/ours_selfsup_flickr.pth.tar
+SSL/Dataset.tar.gz
